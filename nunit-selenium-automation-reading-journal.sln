@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-selenium-automation-reading-journal", "nunit-selenium-automation-reading-journal.csproj", "{62D4B8B0-35C5-4004-B55B-B5CB9E8293AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nunit-selenium-automation-reading-journal.Test", "..\nunit-selenium-automation-reading-journal.Test\nunit-selenium-automation-reading-journal.Test.csproj", "{127D14FF-62D6-414B-A0FF-CC4222023AA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62D4B8B0-35C5-4004-B55B-B5CB9E8293AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D4B8B0-35C5-4004-B55B-B5CB9E8293AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D4B8B0-35C5-4004-B55B-B5CB9E8293AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D4B8B0-35C5-4004-B55B-B5CB9E8293AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127D14FF-62D6-414B-A0FF-CC4222023AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127D14FF-62D6-414B-A0FF-CC4222023AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127D14FF-62D6-414B-A0FF-CC4222023AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127D14FF-62D6-414B-A0FF-CC4222023AA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {349AED9E-570E-4966-BACB-14319DA4F04B}
+	EndGlobalSection
+EndGlobal
