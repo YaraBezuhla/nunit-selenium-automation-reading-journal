@@ -1,19 +1,17 @@
-﻿namespace nunit_selenium_automation_reading_journal.Drivers
+﻿using OpenQA.Selenium;
+
+namespace nunit_selenium_automation_reading_journal.Drivers
 {
     public static class WebDriverFactory
     {
-        public static IDriverFactory GetDriverFactory(string browse)
+        public static IWebDriver CreateWebDriver(BrowserType browserType)
         {
-            switch (browse.ToLower())
+            IDriverFactory factory = browserType switch
             {
-                case "chrome":
-                    return new ChromeDriverFactory();
-                case "firefox":
-                    return new FirefoxDriverFactrory();
-                    default:
-                    return new ChromeDriverFactory();
-            }
-                     
+                BrowserType.Firefox => new FirefoxDriverFactrory(),
+                _ => new ChromeDriverFactory(),
+            };
+            return factory.CreateDriver();
         }
     }
 }

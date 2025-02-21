@@ -1,13 +1,17 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace nunit_selenium_automation_reading_journal.Drivers
 {
-    internal class FirefoxDriverFactrory : IDriverFactory
+    public class FirefoxDriverFactrory : IDriverFactory
     {
         public IWebDriver CreateDriver()
         {
-            return new FirefoxDriver();
+            new DriverManager().SetUpDriver(new FirefoxConfig());
+            return new FirefoxDriver(); 
         }
+        
     }
 }

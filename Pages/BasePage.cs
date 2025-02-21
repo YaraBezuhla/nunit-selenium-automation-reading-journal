@@ -2,7 +2,7 @@
 
 namespace nunit_selenium_automation_reading_journal.Pages
 {
-    internal class BasePage
+    public class BasePage
     {
         protected IWebDriver driver;
 
