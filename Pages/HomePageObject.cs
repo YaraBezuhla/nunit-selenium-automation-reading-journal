@@ -21,7 +21,7 @@ namespace nunit_selenium_automation_reading_journal.Pages
             var blockTitles = GetBlockTitles();
 
             var actualTitles = blockTitles.Select(e => e.Text.Trim()).ToArray();
-            Assert.That(actualTitles, Is.EqualTo(expectedTitles));
+            Assert.That(actualTitles, Is.EqualTo(expectedTitles), "Назви тайтлів не співпадають");
         }
     }
 }
