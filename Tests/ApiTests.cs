@@ -1,8 +1,10 @@
-﻿using nunit_selenium_automation_reading_journal.Utils;
+﻿using Allure.NUnit;
+using nunit_selenium_automation_reading_journal.Utils;
 
 namespace nunit_selenium_automation_reading_journal.Tests
 {
     [TestFixture]
+    [AllureNUnit]
     public class ApiTests
     {
         [Test]
