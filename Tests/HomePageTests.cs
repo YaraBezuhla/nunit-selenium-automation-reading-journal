@@ -16,7 +16,7 @@ namespace nunit_selenium_automation_reading_journal.Tests
         public void AssertBlocksTitles()
         {
             HomePageObject homePage = new HomePageObject(driver);
-            homePage.AssertBooksTitles("Найпопулярніш ікниги", "Українські автори");
+            homePage.AssertBooksTitles("Найпопулярнішікниги", "Українські автори");
 
         }
     }

@@ -8,7 +8,7 @@ namespace nunit_selenium_automation_reading_journal.Drivers
         {
             IDriverFactory factory = browserType switch
             {
-                BrowserType.Firefox => new FirefoxDriverFactrory(),
+                BrowserType.Firefox => new FirefoxDriverFactory(),
                 _ => new ChromeDriverFactory(),
             };
             return factory.CreateDriver();
