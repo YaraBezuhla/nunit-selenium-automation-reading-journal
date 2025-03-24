@@ -5,7 +5,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace nunit_selenium_automation_reading_journal.Drivers
 {
-    public class FirefoxDriverFactrory : IDriverFactory
+    public class FirefoxDriverFactory : IDriverFactory
     {
         public IWebDriver CreateDriver()
         {
