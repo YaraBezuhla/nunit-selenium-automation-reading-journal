@@ -1,4 +1,6 @@
-﻿using Allure.NUnit;
+﻿using Allure.Net.Commons;
+using Allure.NUnit;
+using Allure.NUnit.Attributes;
 using nunit_selenium_automation_reading_journal.Utils;
 
 namespace nunit_selenium_automation_reading_journal.Tests
@@ -8,6 +10,7 @@ namespace nunit_selenium_automation_reading_journal.Tests
     public class ApiTests
     {
         [Test]
+        [AllureSeverity(SeverityLevel.critical)]
         public async Task SuccessfulAddingBookTest ()
         {
            ApiMethods apiMethods = new ApiMethods ();
@@ -15,6 +18,7 @@ namespace nunit_selenium_automation_reading_journal.Tests
         }
 
         [Test]
+        [AllureSeverity(SeverityLevel.critical)]
         public async Task DeleteBook()
         {
             ApiMethods apiMethods = new ApiMethods();

@@ -11,7 +11,7 @@ namespace nunit_selenium_automation_reading_journal.Tests
     {
         protected IWebDriver driver;
         private LoggerConfig _logger;
-        public WebDriverWait wait;
+        protected WebDriverWait wait;
         private readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings();
 
         [SetUp]
@@ -21,9 +21,6 @@ namespace nunit_selenium_automation_reading_journal.Tests
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(_settings.Urls["BaseUrl"]);
 
-            //   wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
-            // Ініціалізація WaitHelper з кастомними налаштуваннями
             var waitHelper = new WaitHelper(driver, _settings.WaitConfig);
             wait = waitHelper.CreateWait();
 
@@ -33,14 +30,20 @@ namespace nunit_selenium_automation_reading_journal.Tests
         [TearDown]
         public void TearDown()
         {
-            var testContext = TestContext.CurrentContext;
-            if (testContext.Result.Outcome.Status != NUnit.Framework.Interfaces.TestStatus.Passed)
-            { 
-                _logger.TakeScreenshot(testContext);
-                _logger.CaptureLog(testContext);
+            try
+            {
+                var testContext = TestContext.CurrentContext;
+                if (testContext.Result.Outcome.Status != NUnit.Framework.Interfaces.TestStatus.Passed)
+                {
+                    _logger.TakeScreenshot(testContext);
+                    _logger.CaptureLog(testContext);
+                }
+
+            } finally
+            {
+                driver.Dispose();
             }
 
-            driver.Dispose();
         }
 
     }
