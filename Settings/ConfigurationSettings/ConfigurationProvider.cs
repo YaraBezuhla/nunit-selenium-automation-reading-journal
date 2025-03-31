@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace nunit_selenium_automation_reading_journal.Settings
+namespace nunit_selenium_automation_reading_journal.Settings.ConfigurationSettings
 {
     public class ConfigurationProvider
     {

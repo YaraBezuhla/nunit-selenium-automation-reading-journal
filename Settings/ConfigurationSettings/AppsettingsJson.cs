@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace nunit_selenium_automation_reading_journal.Settings
+namespace nunit_selenium_automation_reading_journal.Settings.ConfigurationSettings
 {
     public class AppsettingsJson
     {
