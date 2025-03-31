@@ -1,6 +1,8 @@
-﻿using nunit_selenium_automation_reading_journal.Drivers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using nunit_selenium_automation_reading_journal.Drivers;
 using nunit_selenium_automation_reading_journal.Logger;
 using nunit_selenium_automation_reading_journal.Settings;
+using nunit_selenium_automation_reading_journal.Settings.ConfigurationSettings;
 using nunit_selenium_automation_reading_journal.Settings.WaitSettings;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -13,6 +15,8 @@ namespace nunit_selenium_automation_reading_journal.Tests
         private LoggerConfig _logger;
         protected WebDriverWait wait;
         private readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings();
+        protected IServiceProvider ServiceProvider;
+        protected PageProvider Pages; //контейнер
 
         [SetUp]
         public void SetUp()
@@ -25,6 +29,13 @@ namespace nunit_selenium_automation_reading_journal.Tests
             wait = waitHelper.CreateWait();
 
             _logger = new LoggerConfig(driver);
+
+            var services = new ServiceCollection();
+            services.AddSingleton(driver);
+            services.AddSingleton(wait);
+            PageProvider.RegisterPages(services);
+            ServiceProvider = services.BuildServiceProvider();
+            Pages = new PageProvider(ServiceProvider);
         }
 
         [TearDown]
@@ -42,6 +53,10 @@ namespace nunit_selenium_automation_reading_journal.Tests
             } finally
             {
                 driver.Dispose();
+                if (ServiceProvider is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
             }
 
         }
