@@ -39,4 +39,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="PageObjects\Components\" />
+  </ItemGroup>
+
 </Project>
