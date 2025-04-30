@@ -2,6 +2,7 @@
 using Allure.NUnit;
 using Allure.NUnit.Attributes;
 using nunit_selenium_automation_reading_journal.Services.Api;
+using nunit_selenium_automation_reading_journal.TestData.Providers;
 
 namespace nunit_selenium_automation_reading_journal.Tests.ApiTests
 {
@@ -13,16 +14,18 @@ namespace nunit_selenium_automation_reading_journal.Tests.ApiTests
         [AllureSeverity(SeverityLevel.critical)]
         public async Task SuccessfulAddingBookTest()
         {
+            var book = BookDataProvider.GetBookByIndex(0);
             ApiMethods apiMethods = new ApiMethods();
-            await apiMethods.AddBookByApi(0, 201);
+            await apiMethods.AddBookByApi(book, 201);
         }
 
         [Test]
         [AllureSeverity(SeverityLevel.critical)]
         public async Task DeleteBook()
         {
+            var book = BookDataProvider.GetBooks();
             ApiMethods apiMethods = new ApiMethods();
-            await apiMethods.DeleteBookByApi();
+            await apiMethods.DeleteBookByApi(book);
         }
     }
 }
