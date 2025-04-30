@@ -1,4 +1,5 @@
 ﻿using Allure.NUnit.Attributes;
+using nunit_selenium_automation_reading_journal.Core.WaitSettings;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -16,14 +17,12 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Pages
         }
 
         [AllureStep("Get all titles on the main page")]
-        private IReadOnlyCollection<IWebElement> GetBlockTitles() => _driver.FindElements(By.XPath("//h2[@data-testid='popular-block-title']"));
+        private IList<IWebElement> GetBlockTitles() => _driver.WaitUntilAllVisible(By.XPath("//h2[@data-testid='popular-block-title']"));
 
         [AllureStep("Check the titles on the main page")]
         public void AssertBooksTitles(params string[] expectedTitles)
         {
-            var blockTitles = _wait.Until(d => GetBlockTitles());
-
-            var actualTitles = blockTitles.Select(e => e.Text.Trim()).ToArray();
+            var actualTitles = GetBlockTitles().Select(e => e.Text.Trim()).ToArray();
             Assert.That(actualTitles, Is.EqualTo(expectedTitles), "Title names do not match");
         }
     }
