@@ -12,13 +12,16 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
             _serviceProvider = serviceProvider;
         }
 
-        public HomePageObject HomePage => new Lazy<HomePageObject>(() => _serviceProvider.GetRequiredService<HomePageObject>()).Value;
-        public SearchPageObject SearchPage => new Lazy<SearchPageObject>(() => _serviceProvider.GetRequiredService<SearchPageObject>()).Value;
+        private HomePageObject _homePage;
+        public HomePageObject HomePage => _homePage ??= _serviceProvider.GetRequiredService<HomePageObject>();
+
+        private SearchPageObject _searchPage;
+        public SearchPageObject SearchPage => _searchPage ??= _serviceProvider.GetRequiredService<SearchPageObject>();
 
         public static void RegisterPages(IServiceCollection services)
         {
-            services.AddTransient<HomePageObject>();
-            services.AddTransient<SearchPageObject>();
+            services.AddScoped<HomePageObject>();
+            services.AddScoped<SearchPageObject>();
         }
     }
 }
