@@ -44,14 +44,13 @@
 	  <None Update="appsettings.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	  <None Update="appsettings.Development.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="PageObjects\Components\" />
   </ItemGroup>
 
 </Project>
