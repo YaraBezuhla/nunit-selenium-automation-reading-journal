@@ -10,15 +10,15 @@ namespace nunit_selenium_automation_reading_journal.Services.Database
 
         private readonly IMongoClient _client;
         private readonly IMongoDatabase _database;
-        private readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings("Local");
+        private readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings("TestSettings");
 
         private MongoDbSingleton()
         {
             var connectionString = Environment.GetEnvironmentVariable("MONGO_DB_CONNECTION")
-                ?? _settings.ConnectionString["ConnectionString"];
+                ?? _settings.ConnectionString["Local"];
 
             _client = new MongoClient(connectionString);
-            _database = _client.GetDatabase(_settings.DatabaseName["DatabaseName"]);
+            _database = _client.GetDatabase(_settings.DatabaseName["Local"]);
         }
 
         public static MongoDbSingleton Instance => instance.Value;

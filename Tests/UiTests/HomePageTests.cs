@@ -13,7 +13,16 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         [AllureDescription("Checking the titles on the home page")]
         public void AssertBlocksTitles()
         {
-            Pages.HomePage.AssertBooksTitles("Найпопулярнішікниги", "Українські автори");
+            Pages.HomePage.AssertBooksTitles("Найпопулярніші книги", "Українські автори");
+        }
+
+        [Test]
+        [AllureDescription("Comparison of books in the database and those displayed on the website by title")]
+        public void AssertBooks()
+        {
+            List<string> dbTitles = Pages.GetDataWithMongoDB.GetBookTitlesFromDatabase();
+            List<string> webTitles = Pages.BookTitles.GetBookTitlesOnWebsite();
+            Pages.DataManipulation.CompareTwoLists (dbTitles, webTitles);
         }
     }
 }
