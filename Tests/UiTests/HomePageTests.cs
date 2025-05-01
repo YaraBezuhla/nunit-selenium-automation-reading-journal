@@ -22,7 +22,7 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         {
             List<string> dbTitles = Pages.GetDataWithMongoDB.GetBookTitlesFromDatabase();
             List<string> webTitles = Pages.BookTitles.GetBookTitlesOnWebsite();
-            Pages.DataManipulation.CompareDataFromWebsiteAndDatabase(dbTitles, webTitles);
+            Pages.DataManipulation.CompareTwoLists (dbTitles, webTitles);
         }
     }
 }

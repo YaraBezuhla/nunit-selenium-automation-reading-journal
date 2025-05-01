@@ -11,11 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="TestData\books.json" />
+    <None Remove="TestData\Data\books.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="TestData\books.json">
+    <Content Include="TestData\Data\books.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

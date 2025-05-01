@@ -4,7 +4,7 @@ namespace nunit_selenium_automation_reading_journal.TestData.Providers
 {
     public static class BookDataProvider
     {
-        public static List<JObject> GetBooks(string relativePath = "TestData/books.json")
+        public static List<JObject> GetBooks(string relativePath = "TestData/Data/books.json")
         {
             string fullPath = Path.Combine(AppContext.BaseDirectory, relativePath);
 

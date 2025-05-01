@@ -2,6 +2,7 @@
 using nunit_selenium_automation_reading_journal.PageObjects.Components;
 using nunit_selenium_automation_reading_journal.PageObjects.Pages;
 using nunit_selenium_automation_reading_journal.Services.Database;
+using nunit_selenium_automation_reading_journal.TestData;
 
 namespace nunit_selenium_automation_reading_journal.PageObjects
 {
