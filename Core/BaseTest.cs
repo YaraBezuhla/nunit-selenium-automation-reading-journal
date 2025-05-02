@@ -12,11 +12,11 @@ namespace nunit_selenium_automation_reading_journal.Core
     public class BaseTest
     {
         protected IWebDriver driver;
-        private LoggerConfig _logger;
         protected WebDriverWait wait;
         private readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings("TestSettings");
         protected IServiceProvider ServiceProvider;
         protected PageProvider Pages; //контейнер
+        protected TestLogger _logger;
 
         [SetUp]
         public void SetUp()
@@ -28,7 +28,13 @@ namespace nunit_selenium_automation_reading_journal.Core
             var waitHelper = new WaitHelper(driver, _settings.WaitConfig);
             wait = waitHelper.CreateWait();
 
-            _logger = new LoggerConfig(driver);
+            _logger = new TestLogger(driver);
+
+            var consoleLogger = new ConsoleLogHandler();
+            var allureLogger = new AllureLogHandler(driver);
+
+            consoleLogger.Subscribe(_logger);
+            allureLogger.Subscribe(_logger);
 
             var services = new ServiceCollection();
             services.AddSingleton(driver);
@@ -41,24 +47,14 @@ namespace nunit_selenium_automation_reading_journal.Core
         [TearDown]
         public void TearDown()
         {
-            try
-            {
-                var testContext = TestContext.CurrentContext;
-                if (testContext.Result.Outcome.Status != NUnit.Framework.Interfaces.TestStatus.Passed)
-                {
-                    _logger.TakeScreenshot(testContext);
-                    _logger.CaptureLog(testContext);
-                }
+            _logger.FinalizeLogging();
 
-            }
-            finally
-            {
-                driver.Dispose();
+            driver.Dispose();
                 if (ServiceProvider is IDisposable disposable)
                 {
                     disposable.Dispose();
                 }
-            }
+            
 
         }
 

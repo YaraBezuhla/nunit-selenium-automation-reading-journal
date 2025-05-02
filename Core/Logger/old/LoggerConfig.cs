@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using System.Text;
 
-namespace nunit_selenium_automation_reading_journal.Core.Logger
+namespace nunit_selenium_automation_reading_journal.Core.Logger.old
 {
     internal class LoggerConfig
     {
