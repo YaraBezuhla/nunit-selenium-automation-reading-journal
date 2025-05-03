@@ -30,6 +30,12 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
         private GetDataWithMongoDB _getDataWithMongoDB;
         public GetDataWithMongoDB GetDataWithMongoDB => _getDataWithMongoDB ??= _serviceProvider.GetRequiredService<GetDataWithMongoDB>();
 
+        private AddBookPageObject _addBookPageObject;
+        public AddBookPageObject AddBookPageObject => _addBookPageObject ??= _serviceProvider.GetRequiredService<AddBookPageObject>();
+
+        private HeaderComponent _header;
+        public HeaderComponent HeaderComponent => _header ??= _serviceProvider.GetRequiredService<HeaderComponent>();
+
         public static void RegisterPages(IServiceCollection services)
         {
             services.AddScoped<HomePageObject>();
@@ -37,6 +43,8 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
             services.AddScoped<BookTitlesComponent>();
             services.AddScoped<DataManipulation>();
             services.AddScoped<GetDataWithMongoDB>();
+            services.AddScoped<AddBookPageObject>();
+            services.AddScoped<HeaderComponent>();
         }
     }
 }
