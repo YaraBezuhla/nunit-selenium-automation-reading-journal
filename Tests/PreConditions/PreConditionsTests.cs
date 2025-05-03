@@ -4,20 +4,20 @@ using Allure.NUnit.Attributes;
 using nunit_selenium_automation_reading_journal.Services.Api;
 using nunit_selenium_automation_reading_journal.TestData.Providers;
 
-namespace nunit_selenium_automation_reading_journal.Tests.ApiTests
+namespace nunit_selenium_automation_reading_journal.TestData.PreConditions
 {
     [TestFixture]
     [AllureNUnit]
-    public class ApiTests
+    public class PreConditionsTests
     {
+
         [Test]
         [AllureSeverity(SeverityLevel.critical)]
-        public async Task SuccessfulAddingBookTest()
+        public async Task DeleteBook()
         {
-            var book = BookDataProvider.GetBookByIndex(0);
+            var book = BookDataProvider.GetBooks();
             ApiMethods apiMethods = new ApiMethods();
-            await apiMethods.AddBookByApi(book, 201);
+            await apiMethods.DeleteBookByApi(book);
         }
-
     }
 }
