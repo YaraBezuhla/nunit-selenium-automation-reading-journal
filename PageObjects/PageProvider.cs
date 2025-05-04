@@ -18,11 +18,8 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
         private HomePageObject _homePage;
         public HomePageObject HomePage => _homePage ??= _serviceProvider.GetRequiredService<HomePageObject>();
 
-        private SearchPageObject _searchPage;
-        public SearchPageObject SearchPage => _searchPage ??= _serviceProvider.GetRequiredService<SearchPageObject>();
-
-        private BookTitlesComponent _bookTitles;
-        public BookTitlesComponent BookTitles => _bookTitles ??= _serviceProvider.GetRequiredService<BookTitlesComponent>();
+        private BookComponent _bookTitles;
+        public BookComponent BookComponent => _bookTitles ??= _serviceProvider.GetRequiredService<BookComponent>();
 
         private DataManipulation _dataManipulation;
         public DataManipulation DataManipulation => _dataManipulation ??= _serviceProvider.GetRequiredService<DataManipulation>();
@@ -36,15 +33,30 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
         private HeaderComponent _header;
         public HeaderComponent HeaderComponent => _header ??= _serviceProvider.GetRequiredService<HeaderComponent>();
 
+        private BurgerComponent _burger;
+        public BurgerComponent BurgerComponent => _burger ??= _serviceProvider.GetRequiredService<BurgerComponent>();
+
+        private AuthPageObject _authPage;
+        public AuthPageObject AuthPageObject => _authPage ??= _serviceProvider.GetRequiredService<AuthPageObject>(); 
+
+        private BookPageObject _bookPage;
+        public BookPageObject BookPageObject => _bookPage ??= _serviceProvider.GetRequiredService<BookPageObject>();
+
+        private DeleteButtonWithList _deleteComponrnt;
+        public DeleteButtonWithList DeleteButtonWithList => _deleteComponrnt ??= _serviceProvider.GetRequiredService<DeleteButtonWithList>();
+
         public static void RegisterPages(IServiceCollection services)
         {
             services.AddScoped<HomePageObject>();
-            services.AddScoped<SearchPageObject>();
-            services.AddScoped<BookTitlesComponent>();
+            services.AddScoped<BookComponent>();
             services.AddScoped<DataManipulation>();
             services.AddScoped<GetDataWithMongoDB>();
             services.AddScoped<AddBookPageObject>();
             services.AddScoped<HeaderComponent>();
+            services.AddScoped<BurgerComponent>();
+            services.AddScoped<AuthPageObject>();
+            services.AddScoped<BookPageObject>();
+            services.AddScoped<DeleteButtonWithList>();
         }
     }
 }
