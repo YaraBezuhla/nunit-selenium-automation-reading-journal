@@ -15,25 +15,27 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Pages
             _wait = wait;
         }
 
-        public IWebElement InputLogin => _driver.FindElement(By.Id("username"));
-        public IWebElement InputPassword => _driver.FindElement(By.Id("password"));
-        public IWebElement LoginBtn => _driver.FindElement(By.ClassName("login-btn"));
+        private IWebElement LoginField => _driver.FindElement(By.Id("username"));
 
         [AllureStep("Enter login")]
-        public void InputLoginText(string login) => InputLogin.SendKeys(login);
+        public void EnterLogin(string login) => LoginField.SendKeys(login);
+
+        private IWebElement PasswordField => _driver.FindElement(By.Id("password"));
 
         [AllureStep("Enter password")]
-        public void InputPasswordText(string password) => InputPassword.SendKeys(password);
+        public void EnterPassword(string password) => PasswordField.SendKeys(password);
 
-        [AllureStep("Click on login btn")]
-        public void ClickOnLoginBtn() => LoginBtn.Click();
+        private IWebElement LoginButton => _driver.FindElement(By.ClassName("login-btn"));
 
-        [AllureStep("Full authorization")]
-        public void FullAuthorization(string login, string password)
+        [AllureStep("Click on login button")]
+        public void ClickOnLoginButton() => LoginButton.Click();
+
+        [AllureStep("Perform full authorisation")]
+        public void PerformFullAuthorization(string login, string password)
         {
-            InputLoginText(login);
-            InputPasswordText(password);
-            ClickOnLoginBtn();
+            EnterLogin(login);
+            EnterPassword(password);
+            ClickOnLoginButton();
         }
 
     }

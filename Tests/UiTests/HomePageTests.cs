@@ -18,10 +18,10 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
 
         [Test]
         [AllureDescription("Comparison of books in the database and those displayed on the website by title")]
-        public void AssertBooks()
+        public async Task CompareBooksBetweenDbAndWebsite()
         {
-            List<string> dbTitles = Pages.GetDataWithMongoDB.GetBookTitlesFromDatabase();
-            List<string> webTitles = Pages.BookComponent.GetBookTitlesOnWebsite();
+            List<string> dbTitles =  await Pages.GetDataWithMongoDB.GetBookTitlesFromDatabase();
+            List<string> webTitles = Pages.BookTitles.GetAllBookTitlesFromWebsite();
             Pages.DataManipulation.CompareTwoLists (dbTitles, webTitles);
         }
     }

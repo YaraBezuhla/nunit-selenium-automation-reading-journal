@@ -16,7 +16,6 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Pages
             _wait = wait;
         }
 
-        [AllureStep("Get all titles on the main page")]
         private IList<IWebElement> GetBlockTitles() => _driver.WaitUntilAllVisible(By.XPath("//h2[@data-testid='popular-block-title']"));
 
         [AllureStep("Check the titles on the main page")]

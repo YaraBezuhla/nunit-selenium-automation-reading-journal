@@ -15,8 +15,9 @@ namespace nunit_selenium_automation_reading_journal.TestData.PreConditions
         [AllureSeverity(SeverityLevel.critical)]
         public async Task DeleteBook()
         {
-            var book = BookDataProvider.GetBooks();
             ApiMethods apiMethods = new ApiMethods();
+
+            var book = BookDataProvider.GetBooks();
             await apiMethods.DeleteBookByApi(book);
         }
     }

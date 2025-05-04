@@ -14,11 +14,11 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         [TestCase("Танець Недоумка", "Ілларіон Павлюк", "Фентезі")]
         public void AddBookTest(string title, string author, string genre)
         {
-            Pages.HeaderComponent.GoToAddBook();
-            Pages.AddBookPageObject.EnterTitle(title);
-            Pages.AddBookPageObject.EnterAuthor(author);
-            Pages.AddBookPageObject.SelectGenre(genre);
-            Pages.AddBookPageObject.ClickOnSaveBtn();
+            Pages.Header.GoToAddBookPage();
+            Pages.AddBook.EnterTitle(title);
+            Pages.AddBook.EnterAuthor(author);
+            Pages.AddBook.SelectGenre(genre);
+            Pages.AddBook.ClickOnSaveButton();
         }
     }
 }

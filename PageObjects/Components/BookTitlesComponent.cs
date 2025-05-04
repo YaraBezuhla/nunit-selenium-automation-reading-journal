@@ -2,27 +2,26 @@
 using OpenQA.Selenium;
 using nunit_selenium_automation_reading_journal.Core.WaitSettings;
 using Allure.NUnit.Attributes;
-using System.Reflection;
 
 namespace nunit_selenium_automation_reading_journal.PageObjects.Components
 {
-    public class BookComponent
+    public class BookTitlesComponent
     {
         private readonly IWebDriver _driver;
         private readonly WebDriverWait _wait;
 
-        public BookComponent(IWebDriver driver, WebDriverWait wait)
+        public BookTitlesComponent(IWebDriver driver, WebDriverWait wait)
         {
             _driver = driver;
             _wait = wait;
         }
 
-        private IList<IWebElement> GetBookTitles() => _driver.WaitUntilAllVisible(By.ClassName("book-title"));
+        private IList<IWebElement> GetBookTitles => _driver.WaitUntilAllVisible(By.ClassName("book-title"));
 
-        private IWebElement LoadMoreButtonBooksBlock => _driver.FindElement(By.XPath("//div[@data-test='top-books']//button[@data-test='load-more-button']"));
+        private IWebElement LoadMoreBooksButton => _driver.FindElement(By.XPath("//div[@data-test='top-books']//button[@data-test='load-more-button']"));
 
-        [AllureStep("Get all books with website")]
-        public List<string> GetBookTitlesOnWebsite()
+        [AllureStep("Get all book titles from the site")]
+        public List<string> GetAllBookTitlesFromWebsite()
         {
             List<string> titles = new List<string>();
 
@@ -30,9 +29,9 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
             {
                 try
                 {
-                    if (LoadMoreButtonBooksBlock.Displayed)
+                    if (LoadMoreBooksButton.Displayed)
                     {
-                        LoadMoreButtonBooksBlock.Click();
+                        LoadMoreBooksButton.Click();
                     }
                     else
                     {
@@ -44,7 +43,7 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
                     break;
                 }
             }
-            var books = GetBookTitles();
+            var books = GetBookTitles;
             foreach (var book in books)
             {
                 string title = book.Text;
@@ -59,7 +58,7 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
         [AllureStep("Open the book by title")]
         public void OpenBook(string bookExpected)
         {
-            foreach (var name in GetBookTitles())
+            foreach (var name in GetBookTitles)
             {
                 string book = name.Text;
                 if (book.Equals(bookExpected))
@@ -70,11 +69,11 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
             }
         }
 
-        [AllureStep("Check the {1} of the book '{0}'")]
+        [AllureStep("Check the availability of a book by title")]
         public void CheckAvailabilityBook(string bookExpected)
         {
             bool found = false;
-            foreach (var name in GetBookTitles())
+            foreach (var name in GetBookTitles)
             {
                 string book = name.Text;
                 if (book.Equals(bookExpected))
@@ -82,8 +81,8 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
                     found = true;
                     break;
                 }
-                Assert.That(found = true, $"Expected to find the book '{bookExpected}', but it was not found.");
             }
+            Assert.That(found, Is.True, $"Expected to find the book '{bookExpected}', but it was not found.");
         }
     }
 }

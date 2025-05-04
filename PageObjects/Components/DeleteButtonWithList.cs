@@ -15,14 +15,14 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
             _wait = wait;
         }
 
-        public IWebElement DeleteBtn => _driver.FindElement(By.ClassName("delete-button"));
+        private IWebElement DeleteButton => _driver.FindElement(By.ClassName("delete-button"));
 
-        [AllureStep("Click on Delete Btn")]
-        public void ClickOnDeleteBtn()
+        [AllureStep("Click on Delete Button")]
+        public void ClickOnDeleteButton()
         {
             try
             {
-                DeleteBtn.Click();
+                DeleteButton.Click();
             }
             catch (Exception)
             {

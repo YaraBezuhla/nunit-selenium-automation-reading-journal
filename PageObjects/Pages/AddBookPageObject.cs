@@ -16,26 +16,29 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Pages
             _wait = wait;
         }
 
-        private IWebElement TitleInput() => _driver.WaitUntilClickable(By.Id("title"));
-        private IWebElement AuthorInput() => _driver.WaitUntilClickable(By.Id("author"));
-        private IWebElement GenreSelect() => _driver.WaitUntilClickable(By.Id("genre"));
-        private IWebElement SaveBtn() => _driver.WaitUntilClickable(By.TagName("button"));
+        private IWebElement TitleField => _driver.WaitUntilClickable(By.Id("title"));
 
         [AllureStep("Enter the title of book")]
-        public void EnterTitle(string title) => TitleInput().SendKeys(title);
+        public void EnterTitle(string title) => TitleField.SendKeys(title);
+
+        private IWebElement AuthorField => _driver.WaitUntilClickable(By.Id("author"));
 
         [AllureStep("Enter the author of book")]
-        public void EnterAuthor(string author) => AuthorInput().SendKeys(author);
+        public void EnterAuthor(string author) => AuthorField.SendKeys(author);
+
+        private IWebElement GenreSelector => _driver.WaitUntilClickable(By.Id("genre"));
 
         [AllureStep("Select the genre of book")]
         public void SelectGenre(string genre)
         {
-            SelectElement select = new SelectElement(GenreSelect());
+            SelectElement select = new SelectElement(GenreSelector);
             select.SelectByText(genre);
         }
 
-        [AllureStep("Click on save btn")]
-        public void ClickOnSaveBtn() => SaveBtn().Click();
+        private IWebElement SaveButton => _driver.WaitUntilClickable(By.TagName("button"));
+
+        [AllureStep("Click on save button")]
+        public void ClickOnSaveButton() => SaveButton.Click();
 
     }
 }
