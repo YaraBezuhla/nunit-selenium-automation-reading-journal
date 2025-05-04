@@ -15,11 +15,12 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
             _wait = wait;
         }
 
-        public IWebElement WishList => _driver.FindElement(By.XPath("//a[@data-test='wishlist-link']"));
-        public IWebElement ReadList => _driver.FindElement(By.XPath("//a[@data-test='read-books-link']"));
+        private IWebElement WishList => _driver.FindElement(By.XPath("//a[@data-test='wishlist-link']"));
 
         [AllureStep("Click on WishList")]
         public void ClickOnWishList() => WishList.Click();
+
+        private IWebElement ReadList => _driver.FindElement(By.XPath("//a[@data-test='read-books-link']"));
 
         [AllureStep("Click on ReadList")]
         public void ClickOnReadList() => ReadList.Click();

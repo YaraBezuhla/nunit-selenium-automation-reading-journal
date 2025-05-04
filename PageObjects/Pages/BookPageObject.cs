@@ -16,14 +16,15 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Pages
             _wait = wait;
         }
 
-        public IWebElement WishListBtn => _driver.WaitUntilVisible(By.XPath("//button[@data-test='add-to-wishlist']"));
-        public IWebElement ReadListBtn => _driver.WaitUntilVisible(By.XPath("//button[@data-test='add-to-read']"));
+        private IWebElement WishListButton => _driver.WaitUntilVisible(By.XPath("//button[@data-test='add-to-wishlist']"));
 
-        [AllureStep("Click on WishList btn")]
-        public void ClickOnWishListBtn() => WishListBtn.Click();
+        [AllureStep("Click on WishList Button")]
+        public void ClickOnWishListButton() => WishListButton.Click();
 
-        [AllureStep("Click on ReadList btn")]
-        public void ClickOnReadListBtn() => ReadListBtn.Click();
+        private IWebElement ReadListButton => _driver.WaitUntilVisible(By.XPath("//button[@data-test='add-to-read']"));
+
+        [AllureStep("Click on ReadList Button")]
+        public void ClickOnReadListButton() => ReadListButton.Click();
 
     }
 }

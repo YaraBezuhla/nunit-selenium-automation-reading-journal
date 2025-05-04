@@ -18,8 +18,8 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
         private HomePageObject _homePage;
         public HomePageObject HomePage => _homePage ??= _serviceProvider.GetRequiredService<HomePageObject>();
 
-        private BookComponent _bookTitles;
-        public BookComponent BookComponent => _bookTitles ??= _serviceProvider.GetRequiredService<BookComponent>();
+        private BookTitlesComponent _bookTitles;
+        public BookTitlesComponent BookTitles => _bookTitles ??= _serviceProvider.GetRequiredService<BookTitlesComponent>();
 
         private DataManipulation _dataManipulation;
         public DataManipulation DataManipulation => _dataManipulation ??= _serviceProvider.GetRequiredService<DataManipulation>();
@@ -28,27 +28,27 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
         public GetDataWithMongoDB GetDataWithMongoDB => _getDataWithMongoDB ??= _serviceProvider.GetRequiredService<GetDataWithMongoDB>();
 
         private AddBookPageObject _addBookPageObject;
-        public AddBookPageObject AddBookPageObject => _addBookPageObject ??= _serviceProvider.GetRequiredService<AddBookPageObject>();
+        public AddBookPageObject AddBook => _addBookPageObject ??= _serviceProvider.GetRequiredService<AddBookPageObject>();
 
         private HeaderComponent _header;
-        public HeaderComponent HeaderComponent => _header ??= _serviceProvider.GetRequiredService<HeaderComponent>();
+        public HeaderComponent Header => _header ??= _serviceProvider.GetRequiredService<HeaderComponent>();
 
         private BurgerComponent _burger;
-        public BurgerComponent BurgerComponent => _burger ??= _serviceProvider.GetRequiredService<BurgerComponent>();
+        public BurgerComponent Burger => _burger ??= _serviceProvider.GetRequiredService<BurgerComponent>();
 
         private AuthPageObject _authPage;
-        public AuthPageObject AuthPageObject => _authPage ??= _serviceProvider.GetRequiredService<AuthPageObject>(); 
+        public AuthPageObject AuthPage => _authPage ??= _serviceProvider.GetRequiredService<AuthPageObject>(); 
 
         private BookPageObject _bookPage;
-        public BookPageObject BookPageObject => _bookPage ??= _serviceProvider.GetRequiredService<BookPageObject>();
+        public BookPageObject BookPage => _bookPage ??= _serviceProvider.GetRequiredService<BookPageObject>();
 
-        private DeleteButtonWithList _deleteComponrnt;
-        public DeleteButtonWithList DeleteButtonWithList => _deleteComponrnt ??= _serviceProvider.GetRequiredService<DeleteButtonWithList>();
+        private DeleteButtonWithList _deleteComponent;
+        public DeleteButtonWithList DeleteButtonWithList => _deleteComponent ??= _serviceProvider.GetRequiredService<DeleteButtonWithList>();
 
         public static void RegisterPages(IServiceCollection services)
         {
             services.AddScoped<HomePageObject>();
-            services.AddScoped<BookComponent>();
+            services.AddScoped<BookTitlesComponent>();
             services.AddScoped<DataManipulation>();
             services.AddScoped<GetDataWithMongoDB>();
             services.AddScoped<AddBookPageObject>();

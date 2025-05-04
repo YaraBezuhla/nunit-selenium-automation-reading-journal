@@ -16,19 +16,19 @@ namespace nunit_selenium_automation_reading_journal.PageObjects.Components
             _wait = wait;
         }
 
-        private IWebElement GoToAddBookPage() => _driver.FindElement(By.XPath("//a[@data-test='add-book-link']"));
+        private IWebElement AddBookPage => _driver.FindElement(By.XPath("//a[@data-test='add-book-link']"));
 
         [AllureStep("Go to Add Book page")]
-        public void GoToAddBook() => GoToAddBookPage().Click();
+        public void GoToAddBookPage() => AddBookPage.Click();
 
-        public IWebElement LoginInHeader => _driver.FindElement(By.ClassName("auth-btn"));
+        private IWebElement LoginInHeader => _driver.FindElement(By.ClassName("auth-btn"));
 
-        [AllureStep("Click on login btn")]
-        public void ClickLoginInHeader() => LoginInHeader.Click();
+        [AllureStep("Click on login button")]
+        public void ClickOnLoginInHeader() => LoginInHeader.Click();
 
-        public IWebElement BurgerInHeader => _driver.WaitUntilClickable(By.ClassName("burger-menu"));
+        private IWebElement BurgerButton => _driver.WaitUntilClickable(By.ClassName("burger-menu"));
 
-        [AllureStep("Click on burger btn")]
-        public void ClickBurgerInHeader() => BurgerInHeader.Click();
+        [AllureStep("Click on burger button")]
+        public void ClickOnBurgerButton() => BurgerButton.Click();
     }
 }

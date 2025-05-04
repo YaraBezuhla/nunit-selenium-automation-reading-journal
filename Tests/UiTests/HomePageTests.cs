@@ -21,7 +21,7 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         public void AssertBooks()
         {
             List<string> dbTitles = Pages.GetDataWithMongoDB.GetBookTitlesFromDatabase();
-            List<string> webTitles = Pages.BookComponent.GetBookTitlesOnWebsite();
+            List<string> webTitles = Pages.BookTitles.GetAllBookTitlesFromWebsite();
             Pages.DataManipulation.CompareTwoLists (dbTitles, webTitles);
         }
     }

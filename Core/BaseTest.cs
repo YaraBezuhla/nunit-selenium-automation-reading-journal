@@ -13,7 +13,7 @@ namespace nunit_selenium_automation_reading_journal.Core
     {
         protected IWebDriver driver;
         protected WebDriverWait wait;
-        private readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings("TestSettings");
+        private static readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings("TestSettings");
         protected IServiceProvider ServiceProvider;
         protected PageProvider Pages; //контейнер
         protected TestLogger _logger;
@@ -25,23 +25,9 @@ namespace nunit_selenium_automation_reading_journal.Core
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(_settings.Urls["BaseUrl"]);
 
-            var waitHelper = new WaitHelper(driver, _settings.WaitConfig);
-            wait = waitHelper.CreateWait();
-
-            _logger = new TestLogger(driver);
-
-            var consoleLogger = new ConsoleLogHandler();
-            var allureLogger = new AllureLogHandler(driver);
-
-            consoleLogger.Subscribe(_logger);
-            allureLogger.Subscribe(_logger);
-
-            var services = new ServiceCollection();
-            services.AddSingleton(driver);
-            services.AddSingleton(wait);
-            PageProvider.RegisterPages(services);
-            ServiceProvider = services.BuildServiceProvider();
-            Pages = new PageProvider(ServiceProvider);
+            InitWait();
+            InitLoggers();
+            InitProvider();
         }
 
         [TearDown]
@@ -50,12 +36,33 @@ namespace nunit_selenium_automation_reading_journal.Core
             _logger.FinalizeLogging();
 
             driver.Dispose();
-                if (ServiceProvider is IDisposable disposable)
-                {
-                    disposable.Dispose();
-                }
-            
+            if (ServiceProvider is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+        }
 
+        private void InitLoggers()
+        {
+            _logger = new TestLogger(driver);
+            new ConsoleLogHandler().Subscribe(_logger);
+            new AllureLogHandler(driver).Subscribe(_logger);
+        }
+
+        private void InitProvider()
+        {
+            var services = new ServiceCollection();
+            services.AddSingleton(driver);
+            services.AddSingleton(wait);
+            PageProvider.RegisterPages(services);
+            ServiceProvider = services.BuildServiceProvider();
+            Pages = new PageProvider(ServiceProvider);
+        }
+
+        private void InitWait()
+        {
+            var waitHelper = new WaitHelper(driver, _settings.WaitConfig);
+            wait = waitHelper.CreateWait();
         }
 
     }

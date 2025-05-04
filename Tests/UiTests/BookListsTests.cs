@@ -13,13 +13,13 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         public void SuccessfullyAddBookToWishList()
         {
             String bookExpected = "Я бачу, вас цікавить пітьма";
-            Pages.HeaderComponent.ClickLoginInHeader();
-            Pages.AuthPageObject.FullAuthorization("testlogin4", "testlogin4");
-            Pages.BookComponent.OpenBook(bookExpected);
-            Pages.BookPageObject.ClickOnWishListBtn();
-            Pages.HeaderComponent.ClickBurgerInHeader();
-            Pages.BurgerComponent.ClickOnWishList();
-            Pages.BookComponent.CheckAvailabilityBook(bookExpected);
+            Pages.Header.ClickOnLoginInHeader();
+            Pages.AuthPage.PerformFullAuthorization("testlogin4", "testlogin4");
+            Pages.BookTitles.OpenBook(bookExpected);
+            Pages.BookPage.ClickOnWishListButton();
+            Pages.Header.ClickOnBurgerButton();
+            Pages.Burger.ClickOnWishList();
+            Pages.BookTitles.CheckAvailabilityBook(bookExpected);
 
         }
 
@@ -27,11 +27,11 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         [AllureDescription("Delete book with wishlist")]
         public void DeleteBookWithWishList()
         {
-            Pages.HeaderComponent.ClickLoginInHeader();
-            Pages.AuthPageObject.FullAuthorization("testlogin4", "testlogin4");
-            Pages.HeaderComponent.ClickBurgerInHeader();
-            Pages.BurgerComponent.ClickOnWishList();
-            Pages.DeleteButtonWithList.ClickOnDeleteBtn();
+            Pages.Header.ClickOnLoginInHeader();
+            Pages.AuthPage.PerformFullAuthorization("testlogin4", "testlogin4");
+            Pages.Header.ClickOnBurgerButton();
+            Pages.Burger.ClickOnWishList();
+            Pages.DeleteButtonWithList.ClickOnDeleteButton();
         }
 
         [Test]
@@ -39,13 +39,13 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         public void SuccessfullyAddBookToReadList()
         {
             String bookExpected = "Інтернат";
-            Pages.HeaderComponent.ClickLoginInHeader();
-            Pages.AuthPageObject.FullAuthorization("testlogin4", "testlogin4");
-            Pages.BookComponent.OpenBook(bookExpected);
-            Pages.BookPageObject.ClickOnReadListBtn();
-            Pages.HeaderComponent.ClickBurgerInHeader();
-            Pages.BurgerComponent.ClickOnReadList();
-            Pages.BookComponent.CheckAvailabilityBook(bookExpected);
+            Pages.Header.ClickOnLoginInHeader();
+            Pages.AuthPage.PerformFullAuthorization("testlogin4", "testlogin4");
+            Pages.BookTitles.OpenBook(bookExpected);
+            Pages.BookPage.ClickOnReadListButton();
+            Pages.Header.ClickOnBurgerButton();
+            Pages.Burger.ClickOnReadList();
+            Pages.BookTitles.CheckAvailabilityBook(bookExpected);
 
         }
 
@@ -53,11 +53,11 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
         [AllureDescription("Delete book with readlist")]
         public void DeleteBookWithReadList()
         {
-            Pages.HeaderComponent.ClickLoginInHeader();
-            Pages.AuthPageObject.FullAuthorization("testlogin4", "testlogin4");
-            Pages.HeaderComponent.ClickBurgerInHeader();
-            Pages.BurgerComponent.ClickOnReadList();
-            Pages.DeleteButtonWithList.ClickOnDeleteBtn();
+            Pages.Header.ClickOnLoginInHeader();
+            Pages.AuthPage.PerformFullAuthorization("testlogin4", "testlogin4");
+            Pages.Header.ClickOnBurgerButton();
+            Pages.Burger.ClickOnReadList();
+            Pages.DeleteButtonWithList.ClickOnDeleteButton();
         }
     }
 }
