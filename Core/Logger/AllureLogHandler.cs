@@ -20,6 +20,8 @@ namespace nunit_selenium_automation_reading_journal.Core.Logger
 
         private void HandleLog(object? sender, TestLogEventArgs e)
         {
+            AllureApi.AddAttachment("Current URL", "text/plain", Encoding.UTF8.GetBytes(_driver.Url));
+
             string envInfo = $"OS: {Environment.OSVersion}";
             AllureApi.AddAttachment("Environment Info", "text/plain", Encoding.UTF8.GetBytes(envInfo));
 
