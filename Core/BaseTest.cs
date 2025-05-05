@@ -15,7 +15,7 @@ namespace nunit_selenium_automation_reading_journal.Core
         protected WebDriverWait wait;
         private static readonly AppsettingsJson _settings = ConfigurationProvider.LoadSettings("TestSettings");
         protected IServiceProvider ServiceProvider;
-        protected PageProvider Pages; //контейнер
+        protected PageProvider Pages;
         protected TestLogger _logger;
 
         [SetUp]
