@@ -8,6 +8,8 @@ namespace nunit_selenium_automation_reading_journal.TestData.PreConditions
 {
     [TestFixture]
     [AllureNUnit]
+    [AllureFeature("PreConditionsTests")]
+    [Category("Preconditions")]
     public class PreConditionsTests
     {
 

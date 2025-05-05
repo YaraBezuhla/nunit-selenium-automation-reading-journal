@@ -8,6 +8,7 @@ namespace nunit_selenium_automation_reading_journal.Tests.ApiTests
 {
     [TestFixture]
     [AllureNUnit]
+    [AllureFeature("ApiTests")]
     public class ApiTests
     {
         [Test]
