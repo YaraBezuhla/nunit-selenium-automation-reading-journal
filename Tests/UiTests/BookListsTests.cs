@@ -6,6 +6,7 @@ namespace nunit_selenium_automation_reading_journal.Tests.UiTests
 {
     [TestFixture]
     [AllureNUnit]
+    [AllureFeature("BookListsTests")]
     public class BookListsTests : BaseTest
     {
         [Test]
