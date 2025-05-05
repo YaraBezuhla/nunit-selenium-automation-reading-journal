@@ -17,14 +17,14 @@ namespace nunit_selenium_automation_reading_journal.TestData
                 var dbDataSet = new HashSet<string>(listFirst);
                 var missingOnDB = listSecond.Where(title => !dbDataSet.Contains(title)).ToList();
 
-                StringBuilder errorMessage = new StringBuilder("Дані не співпадають:").Append("\n");
+                StringBuilder errorMessage = new StringBuilder("The data does not match:").Append("\n");
                 if (missingOnWebsite.Any())
                 {
-                    errorMessage.AppendLine($"Дані є в базі даних, але відсутні на сайті: {string.Join(", ", missingOnWebsite)}");
+                    errorMessage.AppendLine($"The data is available in the database but not on the website: {string.Join(", ", missingOnWebsite)}");
                 }
                 if (missingOnDB.Any())
                 {
-                    errorMessage.AppendLine($"Дані на сайті, але відсутні в базі даних: {string.Join(", ", missingOnDB)}");
+                    errorMessage.AppendLine($"Data on the website but not in the database: {string.Join(", ", missingOnDB)}");
                 }
 
                 Assert.Fail(errorMessage.ToString());
