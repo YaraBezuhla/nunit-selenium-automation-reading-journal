@@ -5,8 +5,7 @@ namespace nunit_selenium_automation_reading_journal.Services.Database
 {
     public class MongoDbSingleton
     {
-        private static readonly Lazy<MongoDbSingleton> instance =
-            new(() => new MongoDbSingleton());
+        private static readonly Lazy<MongoDbSingleton> instance = new(() => new MongoDbSingleton());
 
         private readonly IMongoClient _client;
         private readonly IMongoDatabase _database;
@@ -14,8 +13,7 @@ namespace nunit_selenium_automation_reading_journal.Services.Database
 
         private MongoDbSingleton()
         {
-            var connectionString = Environment.GetEnvironmentVariable("MONGO_DB_CONNECTION")
-                ?? _settings.ConnectionString["Local"];
+            var connectionString = _settings.ConnectionString["Local"];
 
             _client = new MongoClient(connectionString);
             _database = _client.GetDatabase(_settings.DatabaseName["Local"]);
