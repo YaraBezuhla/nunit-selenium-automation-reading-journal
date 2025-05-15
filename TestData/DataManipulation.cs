@@ -11,20 +11,20 @@ namespace nunit_selenium_automation_reading_journal.TestData
 
             if (!listFirst.ToHashSet().SetEquals(listSecond))
             {
-                var webDataSet = new HashSet<string>(listSecond);
-                var missingOnWebsite = listFirst.Where(title => !webDataSet.Contains(title)).ToList();
+                var listSecondDataSet = new HashSet<string>(listSecond);
+                var missingOnSecondList = listFirst.Where(title => !listSecondDataSet.Contains(title)).ToList();
 
-                var dbDataSet = new HashSet<string>(listFirst);
-                var missingOnDB = listSecond.Where(title => !dbDataSet.Contains(title)).ToList();
+                var listFirstDataSet = new HashSet<string>(listFirst);
+                var missingOnFirstList = listSecond.Where(title => !listFirstDataSet.Contains(title)).ToList();
 
                 StringBuilder errorMessage = new StringBuilder("The data does not match:").Append("\n");
-                if (missingOnWebsite.Any())
+                if (missingOnSecondList.Any())
                 {
-                    errorMessage.AppendLine($"The data is available in the database but not on the website: {string.Join(", ", missingOnWebsite)}");
+                    errorMessage.AppendLine($"The data is available in the first list but not on the second list: {string.Join(", ", missingOnSecondList)}");
                 }
-                if (missingOnDB.Any())
+                if (missingOnFirstList.Any())
                 {
-                    errorMessage.AppendLine($"Data on the website but not in the database: {string.Join(", ", missingOnDB)}");
+                    errorMessage.AppendLine($"Data on the second list but not in the first list: {string.Join(", ", missingOnFirstList)}");
                 }
 
                 Assert.Fail(errorMessage.ToString());

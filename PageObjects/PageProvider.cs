@@ -47,16 +47,16 @@ namespace nunit_selenium_automation_reading_journal.PageObjects
 
         public static void RegisterPages(IServiceCollection services)
         {
-            services.AddScoped<HomePageObject>();
-            services.AddScoped<BookTitlesComponent>();
-            services.AddScoped<DataManipulation>();
-            services.AddScoped<GetDataWithMongoDB>();
-            services.AddScoped<AddBookPageObject>();
-            services.AddScoped<HeaderComponent>();
-            services.AddScoped<BurgerComponent>();
-            services.AddScoped<AuthPageObject>();
-            services.AddScoped<BookPageObject>();
-            services.AddScoped<DeleteButtonWithList>();
+            services.AddSingleton<HomePageObject>();
+            services.AddSingleton<BookTitlesComponent>();
+            services.AddSingleton<DataManipulation>();
+            services.AddSingleton<GetDataWithMongoDB>();
+            services.AddSingleton<AddBookPageObject>();
+            services.AddSingleton<HeaderComponent>();
+            services.AddSingleton<BurgerComponent>();
+            services.AddSingleton<AuthPageObject>();
+            services.AddSingleton<BookPageObject>();
+            services.AddSingleton<DeleteButtonWithList>();
         }
     }
 }
