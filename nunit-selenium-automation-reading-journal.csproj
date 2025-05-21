@@ -23,8 +23,11 @@
   <ItemGroup>
     <PackageReference Include="Allure.Net.Commons" Version="2.12.1" />
     <PackageReference Include="Allure.NUnit" Version="2.12.1" />
+    <PackageReference Include="Boa.Constrictor" Version="4.1.0" />
+    <PackageReference Include="Boa.Constrictor.Screenplay" Version="4.0.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
+    <PackageReference Include="FluentAssertions" Version="8.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.3" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
@@ -51,6 +54,10 @@
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tests\ScreenplayTests\ApiScreenplayTests\" />
   </ItemGroup>
 
 </Project>
